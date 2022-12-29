@@ -1,6 +1,5 @@
 from art import *  # pip install art before using this
-from lib.ferme import bovin, ferme, Animal
-
+from lib.ferme import ferme
 def choix_animal():
     print_separator()
     print("1. Bovin")
@@ -52,27 +51,42 @@ def ajouter_animal():
         nom = input("Nom du bovin ? ")
         age = input("Age du bovin ? ")
         poids = input("Poids du bovin ? ")
-        ferme.ajouter_bovin(nom, age, poids)
-    # elif choix == "chat":
-    #     nom = input("Nom du chat ? ")
-    #     age = input("Age du chat ? ")
-    #     ferme.ajouter_animal(ferme.ajouter_chat(nom, age))
+        ferme.ajouter_bovin(ferme, nom, age, poids)
+    elif choix == "Caprin":
+        nom = input("Nom du caprin ? ")
+        age = input("Age du caprin ? ")
+        poids = input("Poids du caprin ? ")
+        ferme.ajouter_caprin(ferme, nom, age, poids)
+    elif choix == "Ovin":
+        nom = input("Nom de l'ovin ? ")
+        age = input("Age de l'ovin ? ")
+        poids = input("Poids de l'ovin ? ")
+        ferme.ajouter_ovin(ferme, nom, age, poids)
+    elif choix == "Porcin":
+        nom = input("Nom du porcin ? ")
+        age = input("Age du porcin ? ")
+        poids = input("Poids du porcin ? ")
+        ferme.ajouter_porcin(ferme, nom, age, poids)
+    elif choix == "Volaille":
+        nom = input("Nom de la volaille ? ")
+        age = input("Age de la volaille ? ")
+        poids = input("Poids de la volaille ? ")
+        ferme.ajouter_volaille(ferme, nom, age, poids)
     else:
         return 
 
 
-def tuer_animal(nom):
-    if nom == "q":
-        return
-    try:
-        ferme.tuer_animal(nom)
-    except KeyError:
-        print("Cet animal n'existe pas")
-
+def tuer_animal():
+    nom = input("Nom de l'animal à tuer ? ")    
+    for animal in ferme.animaux.values():
+        if nom == animal:
+            print("Animal trouvé")
+        else:
+            print("Cet animal n'existe pas")
+            nom = input("Nom de l'animal à tuer ? ")
+            continue
 
 def ferme_vide():
-    if ferme.animaux == {}:
-        print_separator()
-        print("La ferme est vide")
+    if ferme.afficher_ferme(ferme) == 0:
         return True
     return False

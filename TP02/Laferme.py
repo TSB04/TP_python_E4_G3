@@ -12,11 +12,11 @@ while True:
         if ferme_vide():
             continue
         print_separator()
-        nom = input("Nom de l'animal à tuer ? ")
-        while nom not in ferme.animaux and nom != "q":
-            print("Cet animal n'existe pas")
-            nom = input("Nom de l'animal à tuer ? ")
-        tuer_animal(nom)
+        # nom = input("Nom de l'animal à tuer ? ")
+        # while nom not in ferme.animaux and nom != "q":
+        #     print("Cet animal n'existe pas")
+        #     nom = input("Nom de l'animal à tuer ? ")
+        tuer_animal()
     elif choix == "4":
         ferme.afficher_ferme(ferme)
     elif choix == "5":
