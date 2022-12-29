@@ -1,145 +1,103 @@
-class Animal ():
-    def __init__(self, nom, age, poids):
+class Animal:
+    def __init__(self, nom, age):
         self.nom = nom
         self.age = age
-        self.poids = poids
 
+    def cri(self):
+        print("Cri de l'animal")
 
+class Chat(Animal):
+    def __init__(self, nom, age):
+        super().__init__(nom, age)
+        print(f"Le chat {self.nom} est ne ")
 
-class bovin(Animal):
-    def __init__(self, nom, age, poids):
-        super().__init__(nom, age, poids)
-        print("Le bovin s'appelle", self.nom, "il a", self.age, "ans", "et il pèse", self.poids, "kg")
+    def cri(self):
+        print("Miaou")
+    
+    def __del__(self):
+        print(f"Le chat {self.nom} est mort")
+    
 
-    def crier(self):
+class Chien(Animal):
+    def __init__(self, nom, age):
+        super().__init__(nom, age)
+        print(f"Le chien {self.nom} est ne ")
+
+    def cri(self):
+        print("Ouaf")
+
+    def __del__(self):
+        print(f"Le chien {self.nom} est mort")
+
+class Bovin(Animal):
+    def __init__(self, nom, age):
+        super().__init__(nom, age)
+        print(f"Le bovin {self.nom} est ne ")
+
+    def cri(self):
         print("Mbeuhhhh")
 
+    def __del__(self):
+        print(f"Le bovin {self.nom} est mort")
 
+class Ovin(Animal):
+    def __init__(self, nom, age):
+        super().__init__(nom, age)
+        print(f"L'ovin {self.nom} est ne ")
 
-class ovin(Animal):
-    def __init__(self, nom, age, poids):
-        super().__init__(nom, age, poids)
-        print("L'ovin s'appelle", self.nom, " il a", self.age, "ans", "et il pèse", self.poids, "kg")
-
-    def crier(self):
+    def cri(self):
         print("Mbéh, Mbéhhh")
 
     def __del__(self):
-        print("L'ovin", self.nom, "est mort")
+        print(f"L'ovin {self.nom} est mort")
 
-class caprin(Animal):
-    def __init__(self, nom, age, poids):
-        super().__init__(nom, age, poids)
-        print("Le caprin s'appelle", self.nom, " il a", self.age, "ans", "et il pèse", self.poids, "kg")
+class Caprin(Animal):
+    def __init__(self, nom, age):
+        super().__init__(nom, age)
+        print(f"Le caprin {self.nom} est ne ")
 
-    def crier(self):
+    def cri(self):
         print("béh, béhhh")
 
     def __del__(self):
-        print("Le caprin", self.nom, "est mort")
+        print(f"Le caprin {self.nom} est mort")
 
-class porcin(Animal):
-    def __init__(self, nom, age, poids):
-        super().__init__(nom, age, poids)
-        print("Le porcin s'appelle", self.nom, "et il a", self.age, "ans")
+class Porcin(Animal):
+    def __init__(self, nom, age):
+        super().__init__(nom, age)
+        print(f"Le porcin {self.nom} est ne ")
 
-    def crier(self):
-        print("groin-groin")
-
-    def __del__(self):
-        print("porcin", self.nom, "est mort")
-
-class volaille(Animal):
-    def __init__(self, nom, age, poids):
-        super().__init__(nom, age, poids)
-        print("La volaille s'appelle", self.nom, "et il a", self.age, "ans")
-
-    def crier(self):
-        print("cocorico")
+    def cri(self):
+        print("Groin-groin")
 
     def __del__(self):
-        print("La volaille", self.nom, "est mort")
+        print(f"Le porcin {self.nom} est mort ")
 
-class ferme:
-    animaux = {
-        bovin: {},
-        ovin: {},
-        caprin: {},
-        porcin: {},
-        volaille: {}
-    }
-    def __init__(self, animaux):
-        self.animaux = animaux
+class Volaille(Animal):
+    def __init__(self, nom, age):
+        super().__init__(nom, age)
+        print(f"La volaille {self.nom} est ne ")
 
-# le code actuel ecrase la derniere valeur de l'animal.bovin pour enregistré la nouvelle valeur
-    def ajouter_bovin(self, nom, age, poids):
-        self.animaux.update({bovin:{ "nom": nom, "age": age, "poids": poids}})
-        print("Le bovin", nom, "a été ajouté")
-    def ajouter_ovin(self, nom, age, poids):
-        #insert ne fonctionne pas
-        self.animaux.insert(ovin, {"nom": nom, "age": age, "poids": poids})
-        print("L'ovin", nom, "a été ajouté")
+    def cri(self):
+        print("Cocorico")
 
-    #forme de base mais fonctionne de la meme maniere que ajouter_bovin
-    def ajouter_caprin(self, nom, age, poids):
-        self.animaux[caprin]["nom"] = nom
-        self.animaux[caprin]["age"] = age
-        self.animaux[caprin]["poids"] = poids
-        print("Le caprin", nom, "a été ajouté")
-    def ajouter_porcin(self, nom, age, poids):
-        self.animaux[porcin]["nom"] = nom
-        self.animaux[porcin]["age"] = age
-        self.animaux[porcin]["poids"] = poids
-        print("Le porcin", nom, "a été ajouté")
-    def ajouter_volaille(self, nom, age, poids):
-        self.animaux[volaille]["nom"] = nom
-        self.animaux[volaille]["age"] = age
-        self.animaux[volaille]["poids"] = poids
-        print("La volaille", nom, "a été ajouté")
+    def __del__(self):
+        print(f"La volaille {self.nom} est mort ")
 
-    def tuer_bovin(self, nom):
-        del self.animaux[bovin][nom]
-        print("Le bovin", nom, "a été tué")
-    def tuer_ovin(self, nom):
-        del self.animaux[ovin][nom]
-        print("L'ovin", nom, "a été tué")
-    def tuer_caprin(self, nom):
-        del self.animaux[caprin][nom]
-        print("Le caprin", nom, "a été tué")
-    def tuer_porcin(self, nom):
-        del self.animaux[porcin][nom]
-        print("Le porcin", nom, "a été tué")
-    def tuer_volaille(self, nom):
-        del self.animaux[volaille][nom]
-        print("La volaille", nom, "a été tué")
+class Ferme:
 
-    def get_bovin(self, nom):
-        return self.animaux[bovin][nom]
-        
+    def __init__(self) :
+        self.animaux = {}
 
-#     def tuer_animal(self, nom):
-#         del self.animaux[nom]
-#         print("L'animal", nom, "a été tué")
+    def ajouter_animal(self, animal):
+        self.animaux[animal.nom] = animal
+    
+    def tuer_animal(self, nom):
+        del self.animaux[nom]
 
-#     def get_animal(self, nom, age, poids):
-#         return self.animaux[nom]+self.animaux[age]+self.animaux[poids]
+    def crier(self):
+        for animal in self.animaux.items():
+            animal[1].cri()
 
-#     # def crier(self):
-#     #     for animal in self.animaux.values():
-#     #         animal.crier()
-
-#     # def __del__(self):
-#     #     for animal in self.animaux.values():
-#     #         del animal
-
-    def afficher_ferme(self):
-        if (self.animaux == { bovin: {},ovin: {},caprin: {},porcin: {},volaille: {}}):
-            print("La ferme est vide")
-            return 0
-        else:
-            print("La ferme contient les animaux suivants :")
-            for animal in self.animaux.items():
-                key=animal[0]
-                value=animal[1]
-                print(key, value)
-            return 1
+    def Nrb_animaux(self):
+        print(" Il y actuellement "+str(len(self.animaux))+" animaux/animal dans la ferme") 
