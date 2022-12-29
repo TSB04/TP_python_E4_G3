@@ -1,24 +1,24 @@
-from lib.ferme import ferme
+from lib.ferme import *
 from lib.menu_utils import *
 
 while True:
     print_menu()
     choix = input("Votre choix ? ")
     if choix == "1":
-        ajouter_animal()
+        choix_animal()
     elif choix == "2":
-        ferme.crier()
+        maferme.crier()
     elif choix == "3":
         if ferme_vide():
-            continue
-        print_separator()
-        # nom = input("Nom de l'animal à tuer ? ")
-        # while nom not in ferme.animaux and nom != "q":
-        #     print("Cet animal n'existe pas")
-        #     nom = input("Nom de l'animal à tuer ? ")
-        tuer_animal()
+            print("La ferme est vide")
+        else:
+            nom = input("Nom de l'animal à tuer ? ")
+            if nom not in maferme.animaux :
+                print("Cet animal n'existe pas")
+            else:
+                tuer_animal(nom)
     elif choix == "4":
-        ferme.afficher_ferme(ferme)
+        maferme.Nrb_animaux()
     elif choix == "5":
         break
     else:
